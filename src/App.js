@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+
 import './App.css';
+import NavigationBar from './components/navigationBar'
+import {Routes, Route} from 'react-router-dom'
+import HomePage from './pages/HomePage';
+import BookList from './pages/BookList'
+import BookDetails from './pages/BookDetails'
+import Favourites from './pages/Favourites'
+import NotFound from './pages/NotFound';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <NavigationBar />
+
+      <Routes>
+        <Route exact strict path='/' element={<HomePage />}></Route>
+        <Route exact strict path='/booklist/' element={<BookList />}></Route>
+        <Route exact strict path='/booklist/:id' element={<BookDetails />}></Route>
+        <Route exact strict path='/favourites' element={<Favourites />}></Route>
+        <Route exact strict path='*' element={<NotFound />}></Route>
+      </Routes>
+
+
+      
     </div>
+    
   );
 }
 
